@@ -99,6 +99,56 @@ class Cart {
 }
 
 
+// Расчет стоимости и калорийности гамбургера
+
+class Hamburger {
+  constructor(size, filling, seasoning, mayonnaise) {
+    this.size = size;
+    this.filling = filling;
+    this.seasoning = seasoning || false;
+    this.mayonnaise = mayonnaise || false;
+  }
+  calc() {
+    let cost = 0;
+    let calories = 0;
+    if (this.size == 'big') {
+      cost += 100;
+      calories += 40;
+    } else {
+      cost += 50;
+      calories += 20;
+    }
+    if (this.filling == 'cheese') {
+      cost += 10;
+      calories += 20;
+    } else if (this.filling == 'salad') {
+      cost += 20;
+      calories += 5;
+    } else {
+      cost += 15;
+      calories += 10;
+    }
+    if (this.seasoning) {
+      cost += 15;
+    }
+    if (this.mayonnaise) {
+      cost += 20;
+      calories += 5;
+    }
+    console.log(`Вы взяли гамбургер стоимостью ${cost} руб. и калорийностью ${calories} калорий`);
+  }
+}
+
+let hamburger1 = new Hamburger('big', 'cheese', true, false);
+hamburger1.calc();
+let hamburger2 = new Hamburger('big', 'salad', true, true);
+hamburger2.calc();
+let hamburger3 = new Hamburger('small', 'salad', false, true);
+hamburger3.calc();
+
+
+
+
 // Открытие модального окна корзины
 const cart = document.querySelector('.cart-button');
 const cartPopup = document.querySelector('.cart-popup');
@@ -113,6 +163,8 @@ const cartPopupClose = document.querySelector('.cart-popup__close');
 cartPopupClose.addEventListener('click', () => {
   cartPopup.classList.remove('open');
 });
+
+
 
 // const goods = [{
 //     img: 'img/good-1.jpg',
