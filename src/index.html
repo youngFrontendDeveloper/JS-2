@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="page">
   <header class="header">
     <div class="logo">
       <a href="#"><img src="img/logo_baby.jpg" alt="" width="318" height="80"></a>
@@ -21,6 +21,28 @@
     <div class="products"></div>
   </main>
 
+  <div class="cart-popup">
+    <!-- <div class="cart-popup__body"> -->
+    <div class="cart-popup__content">
+      <div class="cart-popup__close">
+        <svg class="cart-popup__btn-close">
+          <use xlink:href="img/sprite.svg#close-black"></use>
+        </svg>
+      </div>
+      <h3 class="cart-popup__title">Выбранные товары</h3>
+
+      <ul class="cart-popup__list">
+        <li class="cart-popup__list-item">
+          <img src="img/good-1.jpg" alt="Изображение товара">
+        </li>
+        <li class="cart-popup__list-item">Платье</li>
+        <li class="cart-popup__list-item">150 руб.</li>
+        <li class="cart-popup__list-item">1</li>
+        <li class="cart-popup__list-item">150 руб.</li>
+      </ul>
+    </div> <!-- end cart-popup__content-->
+    <!-- </div> -->
+  </div> <!-- end cart-popup-->
   <script src="js/main.js"></script>
 </body>
 

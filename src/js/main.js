@@ -57,6 +57,28 @@ class ProductsList {
 let list = new ProductsList();
 list.render();
 
+//Конструктор для создания элемента корзины 
+
+class CartItem {
+  constructor(product) {
+    this.img = product.img;
+    this.title = product.title;
+    this.price = product.price;
+  }
+}
+
+//Конструктор для создания корзины 
+
+class Cart {
+  add() {}
+
+  delite() {}
+
+  increaseProductQuantity() {}
+
+  reduceProductQuantity() {}
+}
+
 // const goods = [{
 //     img: 'img/good-1.jpg',
 //     title: 'Shirt',
