@@ -70,14 +70,29 @@ class CartItem {
 //Конструктор для создания корзины 
 
 class Cart {
-  add() {}
 
-  delite() {}
+  delite() {} //Удалить товар из корзины
 
-  increaseProductQuantity() {}
+  increaseProductQuantity() {} // Увеличить количество товара
 
-  reduceProductQuantity() {}
+  reduceProductQuantity() {} // Уменьшить количество товара
 }
+
+
+// Открытие модального окна корзины
+const cart = document.querySelector('.cart-button');
+const cartPopup = document.querySelector('.cart-popup');
+
+cart.addEventListener('click', () => {
+  cartPopup.classList.add('open');
+});
+
+// Закрытие модального окна корзины
+const cartPopupClose = document.querySelector('.cart-popup__close');
+
+cartPopupClose.addEventListener('click', () => {
+  cartPopup.classList.remove('open');
+});
 
 // const goods = [{
 //     img: 'img/good-1.jpg',
