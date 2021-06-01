@@ -42,7 +42,6 @@ class ProductsList {
         title: 'Shoes',
         price: 250
       },
-      {},
     ];
   }
   render() {
@@ -52,10 +51,19 @@ class ProductsList {
       block.insertAdjacentHTML('beforeend', productItem.render());
     }
   }
+  calculateAmountOfProduct() { //Подсчет общей суммы всех продуктов на странице
+    let amount = 0;
+    for (let product of this.goods) {
+      amount += product.price;
+    }
+  }
+
 }
 
 let list = new ProductsList();
 list.render();
+list.calculateAmountOfProduct();
+
 
 //Конструктор для создания элемента корзины 
 
@@ -65,17 +73,29 @@ class CartItem {
     this.title = product.title;
     this.price = product.price;
   }
+
+  increaseProductQuantity() {} // Увеличить количество товара
+
+  reduceProductQuantity() {} // Уменьшить количество товара
+
+  delite() {} //Удалить товар из корзины
+
+  recalculateAmountOfProduct() {} // Пересчитать сумму товара, в зависимости от количества
+
 }
 
 //Конструктор для создания корзины 
 
 class Cart {
 
-  delite() {} //Удалить товар из корзины
+  constructor() {
 
-  increaseProductQuantity() {} // Увеличить количество товара
+  }
 
-  reduceProductQuantity() {} // Уменьшить количество товара
+  recalculateAmountOfProducts() {} //  Пересчитать общую сумму всех товаров
+
+  placeOrder() {} // Оформить заказ
+
 }
 
 
