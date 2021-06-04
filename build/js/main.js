@@ -52,10 +52,15 @@ class ProductsList {
     }
   }
   calculateAmountOfProduct() { //Подсчет общей суммы всех продуктов на странице
-    let amount = 0;
-    for (let product of this.goods) {
-      amount += product.price;
-    }
+    // Первый вариант
+    // let amount = 0;
+    // for (let product of this.goods) {
+    //   amount += product.price;
+    // }
+
+    // Второй вариант
+    let res = this.goods.reduce((sum, item) => sum += item.price, 0);
+    console.log(res);
   }
 
 }
