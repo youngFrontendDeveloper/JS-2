@@ -28,8 +28,7 @@
 
   <!-- +++++++++++++ Модальное окно карзины ++++++++++++++ -->
   <div id="cart-popup" class="cart-popup">
-    <!-- <div class="cart-popup__body"> -->
-    <div class="cart-popup__content">
+    <div class="cart-popup__body">
       <div class="cart-popup__close">
         <img src="img/close_x.png" alt="Закрыть модальное окно">
         <!-- <svg class="cart-popup__btn-close">
@@ -39,7 +38,9 @@
       <h3 class="cart-popup__title">Моя корзина товаров</h3>
       <p class="cart-popup__text">Товаров: <span class="cart-popup__text-bold" id="countGoods"></span></p>
       <p class="cart-popup__text">на сумму: <span class="cart-popup__text-bold" id="amount"></span></p>
-      <!-- <ul class="cart-popup__list"> -->
+
+      <div class="cart-popup__content">
+        <!-- <ul class="cart-popup__list"> -->
         <!-- <li class="cart-popup__list-item">
           <img src="img/good-1.jpg" alt="Изображение товара">
         </li>
@@ -50,10 +51,10 @@
         <li class="cart-popup__list-item cart-popup__list-item--delete" title="Удалить товар">
           <img class="cart-popup__delete" src="img/delete-from-cart.ico" alt="Удалить товар">
         </li> -->
-      <!-- </ul> -->
+        <!-- </ul> -->
+      </div>
       <button class="cart-popup__btn-buy">Оформить заказ</button>
-    </div> <!-- end cart-popup__content-->
-    <!-- </div> -->
+    </div> <!-- end cart-popup__body-->
   </div> <!-- end cart-popup-->
 
   <script src="js/main.js"></script>

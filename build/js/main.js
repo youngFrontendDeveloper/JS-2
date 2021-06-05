@@ -65,7 +65,6 @@ class CartList {
   constructor(container = '.cart-popup__content') {
     this.container = container;
     this.goods = [];
-
     this.allProducts = [];
     this._makeGETRequest()
       .then(data => {
@@ -73,7 +72,9 @@ class CartList {
         this.amount = data.amount;
         this.countGoods = data.countGoods;
         this.render();
+        this.delete();
       });
+
   }
 
   _makeGETRequest() {
@@ -93,17 +94,27 @@ class CartList {
       this.allProducts.push(cartObj);
       block.insertAdjacentHTML('beforeend', cartObj.render());
     }
-    countGoods.insertAdjacentHTML('beforeend', this.countGoods)
+    countGoods.insertAdjacentHTML('beforeend', this.countGoods);
     amount.insertAdjacentHTML('beforeend', `${this.amount} руб.`);
   }
+
+  delete() { //Удалить товар из корзины      
+    for (let product of this.allProducts) {
+      console.log(product);
+      let btnDelete = document.querySelectorAll('.cart-popup__list-item--delete');
+      for (let item of btnDelete) {
+        item.addEventListener('click', () => {
+          item.parentElement.remove(product);
+        });
+      }
+    }
+  } //end delete()
 
   recalculateAmountOfProducts() {} //  Пересчитать общую сумму всех товаров
 
   placeOrder() {} // Оформить заказ
 
-  delite() {} //Удалить товар из корзины
-
-}
+} // end CartList
 
 
 //Конструктор для создания элемента корзины 
@@ -142,6 +153,7 @@ class CartItem {
 }
 
 let cartList = new CartList();
+
 
 
 
