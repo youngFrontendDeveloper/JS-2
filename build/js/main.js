@@ -11,9 +11,11 @@ class GoodsList {
     this.container = container;
     this.goods = [];
     this.allProducts = [];
+    this.filteredGoods = [];
     this._makeGETRequest()
       .then(data => {
         this.goods = [...data];
+        this.filteredGoods = [...data];
         this.render();
       });
   }
@@ -25,15 +27,31 @@ class GoodsList {
         console.log(error);
       });
   }
+
   render() {
-    const block = document.querySelector(this.container);
-    for (let product of this.goods) {
-      const productObj = new GoodsItem(product);
-      this.allProducts.push(productObj);
-      block.insertAdjacentHTML('beforeend', productObj.render());
+    let block = '';
+    this.filteredGoods.forEach(good => {
+      const goodItem = new GoodsItem(good);
+      block += goodItem.render();
+    });
+    document.querySelector(this.container).innerHTML = block;
+    console.log(this.filteredGoods);
+    if (this.filteredGoods.length == 0) {
+      console.log(this.filteredGoods);
+      document.querySelector(this.container).innerHTML = '<p>Соответствий не найдено</p>';
     }
   }
-}
+
+  filterGoods(value) {
+    const regexp = new RegExp(value, 'i');
+    this.filteredGoods = this.goods.filter(good => regexp.test(good.product_name));
+    this.render();
+  }
+
+
+
+
+} //end GoodsList
 
 
 
@@ -57,6 +75,14 @@ class GoodsItem {
 
 let list = new GoodsList();
 
+// Поиск
+const searchBtn = document.querySelector('.search__btn');
+const searchInput = document.querySelector('.search__input');
+
+searchBtn.addEventListener('click', (e) => {
+  const value = searchInput.value;
+  list.filterGoods(value);
+});
 
 //Конструктор для создания корзины 
 
@@ -100,7 +126,6 @@ class CartList {
 
   delete() { //Удалить товар из корзины      
     for (let product of this.allProducts) {
-      console.log(product);
       let btnDelete = document.querySelectorAll('.cart-popup__list-item--delete');
       for (let item of btnDelete) {
         item.addEventListener('click', () => {
