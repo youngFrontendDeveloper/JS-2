@@ -22,48 +22,48 @@ document.querySelector('.text2').innerText = newText2;
 // e. Если одно из полей не прошло валидацию, необходимо выделить это поле красной рамкой и сообщить пользователю об ошибке.
 
 
-let btn = document.querySelector('button[type=submit]');
-btn.addEventListener('click', (e) => {
-  e.preventDefault();
-  let userName = document.querySelector('.user-name');
-  let userPhone = document.querySelector('.user-phone');
-  let userMail = document.querySelector('.user-mail');
-  let userMesage = document.querySelector('.user-mesage');
-  let errorName = document.querySelector('.error-name');
-  let errorPhone = document.querySelector('.error-phone');
-  let errorMail = document.querySelector('.error-mail');
-  let errorMesage = document.querySelector('.error-mesage');
-  let sucsess = document.querySelector('.sucsess');
+// let btn = document.querySelector('button[type=submit]');
+// btn.addEventListener('click', (e) => {
+//   e.preventDefault();
+//   let userName = document.querySelector('.user-name');
+//   let userPhone = document.querySelector('.user-phone');
+//   let userMail = document.querySelector('.user-mail');
+//   let userMesage = document.querySelector('.user-mesage');
+//   let errorName = document.querySelector('.error-name');
+//   let errorPhone = document.querySelector('.error-phone');
+//   let errorMail = document.querySelector('.error-mail');
+//   let errorMesage = document.querySelector('.error-mesage');
+//   let sucsess = document.querySelector('.sucsess');
 
-  if (userName.value.match(/^[A-ZА-ЯЁ]{1}[a-zа-яё]+$/)) {
-    removeError(userName, errorName);
-    if (userPhone.value.match(/[\+7]\([0-9]{3}\)[0-9]{3}-[0-9]{4}$/)) {
-      removeError(userPhone, errorPhone);
-      if (userMail.value.match(/^[a-zа-я0-9-\._]+@[a-z0-9-_]+\.[a-z0-9-_]{2,6}/iu)) {
-        removeError(userMail, errorMail);
-        if (userMesage.value.length >= 1) {
-          removeError(userMesage, errorMesage);
-          sucsess.style.display = "block";
-        } else {
-          addError(userMesage, errorMesage);
-        }
-      } else {
-        addError(userMail, errorMail);
-      }
-    } else {
-      addError(userPhone, errorPhone);
-    }
-  } else {
-    addError(userName, errorName);
-  }
-});
+//   if (userName.value.match(/^[A-ZА-ЯЁ]{1}[a-zа-яё]+$/)) {
+//     removeError(userName, errorName);
+//     if (userPhone.value.match(/[\+7]\([0-9]{3}\)[0-9]{3}-[0-9]{4}$/)) {
+//       removeError(userPhone, errorPhone);
+//       if (userMail.value.match(/^[a-zа-я0-9-\._]+@[a-z0-9-_]+\.[a-z0-9-_]{2,6}/iu)) {
+//         removeError(userMail, errorMail);
+//         if (userMesage.value.length >= 1) {
+//           removeError(userMesage, errorMesage);
+//           sucsess.style.display = "block";
+//         } else {
+//           addError(userMesage, errorMesage);
+//         }
+//       } else {
+//         addError(userMail, errorMail);
+//       }
+//     } else {
+//       addError(userPhone, errorPhone);
+//     }
+//   } else {
+//     addError(userName, errorName);
+//   }
+// });
 
-function addError(elem, err) {
-  err.classList.remove('error');
-  elem.style.borderColor = "red";
-}
+// function addError(elem, err) {
+//   err.classList.remove('error');
+//   elem.style.borderColor = "red";
+// }
 
-function removeError(elem, err) {
-  err.classList.add('error');
-  elem.style.borderColor = 'inherit';
-}
+// function removeError(elem, err) {
+//   err.classList.add('error');
+//   elem.style.borderColor = 'inherit';
+// }
