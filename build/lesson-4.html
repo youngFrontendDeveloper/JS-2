@@ -75,6 +75,17 @@
   </form>
 
   <script src='js/lesson-4.js'></script>
+
+  <script>
+    window.onload = () => {
+      document.querySelector('.form').addEventListener('submit', e => {
+        let valid = new Validator('form');
+        if (!valid.valid) {
+          e.preventDefault();
+        }
+      })
+    }
+  </script>
 </body>
 
 </html>

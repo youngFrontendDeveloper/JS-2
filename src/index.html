@@ -4,69 +4,76 @@
 <head>
   <title>eShop</title>
   <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body class="page">
-  <header class="header">
-    <div class="container center-sb">
-      <div class="logo">
-        <a href="#"><img src="img/logo_baby.jpg" alt="" width="318" height="80"></a>
-      </div>
-      <form action="#" method="GET" class="search">
-        <input class="search__input" type="text" placeholder="Поиск">
-        <button class="search__btn">
-          <img src="img/search.png" alt="Искать">
-          <!-- <svg class="icon-search">
+  <div id="app">
+    <header class="header">
+      <div class="container center-sb">
+        <div class="logo">
+          <a href="#"><img src="img/logo_baby.jpg" alt="" width="318" height="80"></a>
+        </div>
+        <form action="#" method="GET" class="search">
+          <input v-model="searchLine" class="search__input" type="text" placeholder="Поиск">
+          <button class="search__btn" @click="filterGoods()">
+            <img src="img/search.png" alt="Искать">
+            <!-- <svg class="icon-search">
           <use xlink:href="img/sprite.svg#search"></use>
         </svg> -->
-        </button>
-      </form>
-      <a href="#cart-popup" class="cart-button">
-        <img src="img/cart.png" alt="Корзина">
-        <!-- <svg class="icon-card">
+          </button>
+        </form>
+        <a href="#cart-popup" class="cart-button">
+          <img src="img/cart.png" alt="Корзина">
+          <!-- <svg class="icon-card">
           <use xlink:href="img/sprite.svg#card"></use>
         </svg> -->
-      </a>
-    </div> <!-- end container -->
-  </header>
-  <main>
-    <div class="container">
-      <div class="products"></div>
-    </div>
-  </main>
+        </a>
+      </div> <!-- end container -->
+    </header>
+    <main>
+      <div class="container">
+        <div class="products">
+          <div class="products__item" v-for="item in filteredGoods">
+            <img :src="imgCatalog" class="products__item-img" alt="Картинка товара">
+            <h3 class="products__item-title">{{item.product_name}}</h3>
+            <p class="products__item-text">{{item.price}}</p>
+            <button class="products__item-btn">Add</button>
+            <!-- <p>{{item.quantity}}</p> -->
+          </div>
+        </div>
+      </div>
+    </main>
 
-  <!-- +++++++++++++ Модальное окно карзины ++++++++++++++ -->
-  <div id="cart-popup" class="cart-popup">
-    <div class="cart-popup__body">
-      <div class="cart-popup__close">
-        <img src="img/close_x.png" alt="Закрыть модальное окно">
-        <!-- <svg class="cart-popup__btn-close">
+    <!-- +++++++++++++ Модальное окно карзины ++++++++++++++ -->
+    <div id="cart-popup" class="cart-popup">
+      <div class="cart-popup__body">
+        <div class="cart-popup__close">
+          <img src="img/close_x.png" alt="Закрыть модальное окно">
+          <!-- <svg class="cart-popup__btn-close">
           <use xlink:href="img/sprite.svg#close-black"></use>
         </svg> -->
-      </div>
-      <h3 class="cart-popup__title">Моя корзина товаров</h3>
-      <p class="cart-popup__text">Товаров: <span class="cart-popup__text-bold" id="countGoods"></span></p>
-      <p class="cart-popup__text">на сумму: <span class="cart-popup__text-bold" id="amount"></span></p>
+        </div>
+        <h3 class="cart-popup__title">Моя корзина товаров</h3>
+        <p class="cart-popup__text">Товаров: <span class="cart-popup__text-bold" id="countGoods"></span></p>
+        <p class="cart-popup__text">на сумму: <span class="cart-popup__text-bold" id="amount"></span></p>
 
-      <div class="cart-popup__content">
-        <!-- <ul class="cart-popup__list"> -->
-        <!-- <li class="cart-popup__list-item">
-          <img src="img/good-1.jpg" alt="Изображение товара">
-        </li>
-        <li class="cart-popup__list-item">Платье</li>
-        <li class="cart-popup__list-item">150 руб.</li>
-        <li class="cart-popup__list-item">1</li>
-        <li class="cart-popup__list-item">150 руб.</li>
-        <li class="cart-popup__list-item cart-popup__list-item--delete" title="Удалить товар">
-          <img class="cart-popup__delete" src="img/delete-from-cart.ico" alt="Удалить товар">
-        </li> -->
-        <!-- </ul> -->
-      </div>
-      <button class="cart-popup__btn-buy">Оформить заказ</button>
-    </div> <!-- end cart-popup__body-->
-  </div> <!-- end cart-popup-->
+        <div class="cart-popup__content">
+          <div class="cart-popup__list" v-for="item of filteredGoods">
+            <img class="cart-popup__list-item" :src="imgCatalog" alt="Картинка товара">
+            <h3 class="cart-popup__list-item">{{item.product_name}}</h3>
+            <p class="cart-popup__list-item">{{item.price}}</p>
+            <p class="cart-popup__list-item">{{item.quantity}}</p>
+          </div>
+        </div>
+        <button class="cart-popup__btn-buy">Оформить заказ</button>
+      </div> <!-- end cart-popup__body-->
+    </div> <!-- end cart-popup-->
 
-  <script src="js/main.js"></script>
+  </div> <!-- end #app -->
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="js/main.js" defer></script>
 
 </body>
 
