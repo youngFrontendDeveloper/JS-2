@@ -16,6 +16,10 @@
         </div>
         <form action="#" method="GET" class="search">
           <input v-model="searchLine" class="search__input" type="text" placeholder="Поиск">
+          <img class="search__btn-remove" @click="clearSearchLine" src="img/clear.png" alt="Стереть">
+          <!-- <svg class="icon-search">
+          <use xlink:href="img/sprite.svg#clear"></use>
+        </svg> -->
           <button class="search__btn" @click="filterGoods()">
             <img src="img/search.png" alt="Искать">
             <!-- <svg class="icon-search">
@@ -23,7 +27,7 @@
         </svg> -->
           </button>
         </form>
-        <a href="#cart-popup" class="cart-button">
+        <a @click='show=!show' href="#cart-popup" class="cart-button">
           <img src="img/cart.png" alt="Корзина">
           <!-- <svg class="icon-card">
           <use xlink:href="img/sprite.svg#card"></use>
@@ -40,15 +44,16 @@
             <p class="products__item-text">{{item.price}}</p>
             <button class="products__item-btn">Add</button>
             <!-- <p>{{item.quantity}}</p> -->
-          </div>
+          </div> <!-- end products__item -->
+          <p v-if="ifNull">Соответствий не найдено</p>
         </div>
       </div>
     </main>
 
     <!-- +++++++++++++ Модальное окно карзины ++++++++++++++ -->
-    <div id="cart-popup" class="cart-popup">
+    <div id="cart-popup" class="cart-popup open" v-if="show">
       <div class="cart-popup__body">
-        <div class="cart-popup__close">
+        <div class="cart-popup__close" @click='show=!show'>
           <img src="img/close_x.png" alt="Закрыть модальное окно">
           <!-- <svg class="cart-popup__btn-close">
           <use xlink:href="img/sprite.svg#close-black"></use>

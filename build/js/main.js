@@ -11,6 +11,7 @@ const app = new Vue({
     show: false,
     filteredGoods: [],
     isVisibleCart: false,
+    ifNull: false,
 
   }, //end data
 
@@ -31,6 +32,15 @@ const app = new Vue({
     filterGoods() {
       const regexp = new RegExp(this.searchLine, 'i');
       this.filteredGoods = this.products.filter(good => regexp.test(good.product_name));
+      if (this.filteredGoods.length == 0) {
+        this.ifNull = true;
+        console.log(this.ifNull);        
+      } else {
+        this.ifNull = false;
+      }
+    },
+    clearSearchLine() {
+      this.searchLine = '';
     }
 
   }, //end methods
