@@ -1,0 +1,12 @@
+[
+  {
+    "id_product": 1,
+    "product_name": "Ноутбук розовый",
+    "price": 45000
+  },
+  {
+    "id_product": 455,
+    "product_name": "Мышка маленькая",
+    "price": 900
+  }
+]
