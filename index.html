@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Интернет-магазин</title>
+    <!-- <link rel="stylesheet" href="css/normalize.css"> -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="app">
+        <header class="header">
+            <div class="container center-sb">
+                <div class="logo">
+                    <a href="#"><img src="img/logo_baby.jpg" alt="" width="318" height="80"></a>
+                </div>
+                <div class="cart">
+                    <filter_el></filter_el>
+
+                    <cart ref="cart"></cart>
+                </div>
+
+        </header>
+
+        <main>
+            <products ref="products" class="products center-sb"></products>
+
+        </main>
+
+         <!-- +++++++++++++ Модальное окно карзины ++++++++++++++ -->
+  <div id="cart-popup" class="cart-popup" v-show="visible">
+    <div class="cart-popup__body">
+      <div class="cart-popup__close" @click='visible=!visible'>
+        <img src="img/close_x.png" alt="Закрыть модальное окно">
+        <!-- <svg class="cart-popup__btn-close">
+          <use xlink:href="img/sprite.svg#close-black"></use>
+        </svg> -->
+      </div>
+      <h3 class="cart-popup__title">Моя корзина товаров</h3>
+      <p class="cart-popup__text">Товаров: <span class="cart-popup__text-bold" id="countGoods"></span></p>
+      <p class="cart-popup__text">на сумму: <span class="cart-popup__text-bold" id="amount"></span></p>
+
+      <div class="cart-popup__content">
+        <div class="cart-popup__list" v-for="item in cartItems">
+          <img class="cart-popup__list-item" :src="imgCatalog" alt="Картинка товара">
+          <h3 class="cart-popup__list-item">{{item.product_name}}</h3>
+          <p class="cart-popup__list-item">{{item.price}}</p>
+          <p class="cart-popup__list-item">
+            <span @click="increment($event, item)" class="cart-popup__counter">+</span> <span
+              class="cart-popup__quantity">1</span> <span @click="decrement($event)"
+              class="cart-popup__counter">-</span></p>
+          <p class="cart-popup__list-item cart-popup__list-item--delete" @click="deleteItem($event)"
+            title="Удалить товар">
+            <img class="cart-popup__delete" src="img/delete-from-cart.ico" alt="Удалить товар">
+          </p>
+        </div>
+      </div>
+      <a class="link cart-popup__btn-buy" href="#">Оформить заказ</a>
+    </div> <!-- end cart-popup__body-->
+  </div> <!-- end cart-popup-->
+    </div>
+    <!-- <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
+        integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous">
+    </script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/CartComp.js"></script>
+    <script src="js/ProdComp.js"></script>
+    <script src="js/FilterComp.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
